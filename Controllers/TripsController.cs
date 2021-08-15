@@ -17,6 +17,12 @@ namespace Trips.Controllers
             var allTrips = _service.GetAllTrips();
             return Ok(allTrips);
         }
+        [HttpGet("SingleTrip/{id}")]
+        public IActionResult GetTripById(int id)
+        {
+            var trip = _service.GetTripById(id);
+            return Ok(trip);
+        }
         [HttpPost("AddTrip")]
         public IActionResult AddTrip([FromBody] Trip trip)
         {
@@ -38,5 +44,6 @@ namespace Trips.Controllers
             _service.DeleteTrip(id);
             return Ok();
         }
+
     }
 }
