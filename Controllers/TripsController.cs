@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Trips.Data;
-
 namespace Trips.Controllers
 {
     [Route("api/[controller]")]
@@ -11,18 +10,21 @@ namespace Trips.Controllers
         {
             this._service = service;
         }
-        [HttpGet("[action ]")]
+
+        [HttpGet("[action]")]
         public IActionResult GetTrips()
         {
             var allTrips = _service.GetAllTrips();
             return Ok(allTrips);
         }
+
         [HttpGet("SingleTrip/{id}")]
         public IActionResult GetTripById(int id)
         {
             var trip = _service.GetTripById(id);
             return Ok(trip);
         }
+
         [HttpPost("AddTrip")]
         public IActionResult AddTrip([FromBody] Trip trip)
         {
@@ -32,18 +34,19 @@ namespace Trips.Controllers
             }
             return Ok();
         }
+
         [HttpPut("UpdateTrip/{id}")]
         public IActionResult UpdateTrip(int id, [FromBody] Trip trip)
         {
             _service.UpdateTrip(id, trip);
             return Ok(trip);
         }
+
         [HttpDelete("DeleteTrip/{id}")]
         public IActionResult DeleteTrip(int id)
         {
             _service.DeleteTrip(id);
             return Ok();
         }
-
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+
 namespace Trips.Data
 {
     public class TripService : ITripService
@@ -20,12 +21,12 @@ namespace Trips.Data
 
         public List<Trip> GetAllTrips() => Data.Trips.ToList();
 
-
         public Trip GetTripById(int tripId) => Data.Trips.FirstOrDefault(n => n.Id == tripId);
 
         public void UpdateTrip(int tripId, Trip trip)
         {
             var oldTrip = Data.Trips.FirstOrDefault(n => n.Id == tripId);
+
             if (oldTrip != null)
             {
                 oldTrip.Name = trip.Name;

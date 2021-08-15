@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+
 namespace Trips.Data
 {
     public static class Data
