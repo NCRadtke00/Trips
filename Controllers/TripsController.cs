@@ -32,5 +32,11 @@ namespace Trips.Controllers
             _service.UpdateTrip(id, trip);
             return Ok(trip);
         }
+        [HttpDelete("DeleteTrip/{id}")]
+        public IActionResult DeleteTrip(int id)
+        {
+            _service.DeleteTrip(id);
+            return Ok();
+        }
     }
 }
