@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using System.Linq;
 namespace Trips.Data
 {
     public class TripService : ITripService
@@ -14,10 +14,8 @@ namespace Trips.Data
             throw new System.NotImplementedException();
         }
 
-        public List<Trip> GetAllTrips()
-        {
-            throw new System.NotImplementedException();
-        }
+        public List<Trip> GetAllTrips() => Data.Trips.ToList();
+
 
         public Trip GetTripById(int tripId)
         {
