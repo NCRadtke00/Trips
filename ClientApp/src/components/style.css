@@ -1,0 +1,17 @@
+.home {
+  text-align: center;
+  background-color: lightblue;
+  margin: 20px;
+  padding: 10%;
+  border-radius: 50%;
+}
+.options {
+  text-align: center;
+  background-color: lightblue;
+  margin: 5px;
+  padding: 5%;
+  border-radius: 50%;
+}
+.options li {
+  font-size: large;
+}
