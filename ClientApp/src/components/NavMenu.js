@@ -52,9 +52,10 @@ export class NavMenu extends Component {
                     Add
                   </NavLink>
                 </NavItem>
+
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/Trips">
-                    Trips
+                    All Trips
                   </NavLink>
                 </NavItem>
                 {/* <NavItem>

@@ -7,6 +7,7 @@ import { Counter } from "./components/Counter";
 import { Trips } from "./components/Trip/Trips";
 import "./custom.css";
 import { Create } from "./components/Trip/Create";
+import { Update } from "./components/Trip/Update";
 
 export default class App extends Component {
   static displayName = App.name;
@@ -19,6 +20,7 @@ export default class App extends Component {
         <Route path="/fetch-data" component={FetchData} /> */}
         <Route path="/trips" component={Trips} />
         <Route path="/create" component={Create} />
+        <Route path="/update/:id" component={Update} />
       </Layout>
     );
   }

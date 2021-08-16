@@ -3,6 +3,7 @@ import axios from "axios";
 export class Trips extends Component {
   constructor(props) {
     super(props);
+    this.onTripUpdate = this.onTripUpdate.bind(this);
     this.state = {
       trips: [],
       loading: false,
@@ -10,6 +11,10 @@ export class Trips extends Component {
   }
   componentDidMount() {
     this.populateTripsData();
+  }
+  onTripUpdate(id) {
+    const { history } = this.props;
+    history.push("/update/" + id);
   }
   populateTripsData() {
     axios.get("api/Trips/GetTrips").then((result) => {
@@ -40,7 +45,18 @@ export class Trips extends Component {
                   ? new Date(trip.dateCompleted).toLocaleDateString()
                   : "-"}
               </td>
-              <td> - </td>
+              <td>
+                {" "}
+                <div className="form-group">
+                  <button
+                    onClick={() => this.onTripUpdate(trip.id)}
+                    className="btn btn-success"
+                  >
+                    {" "}
+                    Update
+                  </button>
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>
