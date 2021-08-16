@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using Trips.Data;
 namespace Trips.Controllers
@@ -14,8 +15,15 @@ namespace Trips.Controllers
         [HttpGet("[action]")]
         public IActionResult GetTrips()
         {
-            var allTrips = _service.GetAllTrips();
-            return Ok(allTrips);
+            try
+            {
+                var allTrips = _service.GetAllTrips();
+                return Ok(allTrips);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("SingleTrip/{id}")]

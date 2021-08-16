@@ -7,7 +7,9 @@ export class Trips extends Component {
     this.onTripDelete = this.onTripDelete.bind(this);
     this.state = {
       trips: [],
-      loading: false,
+      loading: true,
+      failed: false,
+      error: "",
     };
   }
   componentDidMount() {
@@ -22,10 +24,25 @@ export class Trips extends Component {
     history.push("/delete/" + id);
   }
   populateTripsData() {
-    axios.get("api/Trips/GetTrips").then((result) => {
-      const response = result.data;
-      this.setState({ trips: response, loading: false });
-    });
+    axios
+      .get("api/Trips/GetTrips")
+      .then((result) => {
+        const response = result.data;
+        this.setState({
+          trips: response,
+          loading: false,
+          failed: false,
+          error: "",
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          trips: [],
+          loading: false,
+          failed: true,
+          error: "Trips could not be loaded",
+        });
+      });
   }
   renderAllTripsTable(trips) {
     return (
@@ -79,13 +96,18 @@ export class Trips extends Component {
       <p>
         <em>Loading...</em>
       </p>
+    ) : this.state.failed ? (
+      <div className="text-danger">
+        <em>{this.state.error}</em>
+      </div>
     ) : (
       this.renderAllTripsTable(this.state.trips)
     );
+
     return (
       <div>
-        <h1>All Trips</h1>
-        <p>Here you can see all the trips</p>
+        <h1>All trips</h1>
+        <p>Here you can see all trips</p>
         {content}
       </div>
     );
