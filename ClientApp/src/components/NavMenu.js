@@ -29,12 +29,12 @@ const NavMenu = () => {
           {isAuthenticated ? (
             <ul className="navbar-nav flex-grow">
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/create">
+                <NavLink tag={Link} className="btn btn-success" to="/create">
                   Create
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/trips">
+                <NavLink tag={Link} className="btn btn-primary" to="/trips">
                   Trips
                 </NavLink>
               </NavItem>
